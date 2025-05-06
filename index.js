@@ -13,7 +13,7 @@ async function checkDMV() {
     const mayDates = dates?.LocationAvailabilityDates?.filter(date => date?.AvailabilityDate?.includes("2025-05"));
     if (mayDates.length > 0) {
       console.log("✅ May dates available!", mayDates);
-      await sendEmail(mayDates.join(", "));
+      await sendEmail(mayDates.map(data => data.AvailabilityDate).join(", "));
     } else {
       console.log("❌ No May dates available at this time.");
     }
