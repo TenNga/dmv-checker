@@ -16,7 +16,7 @@ async function checkAvailability() {
     const response = await axios.get(URL);
     const availableDates = response.data;
 
-    const mayDates = availableDates.filter(date => date.startsWith('2025-05'));
+    const mayDates = availableDates?.LocationAvailabilityDates?.filter(date => date?.AvailabilityDate.startsWith('2025-05'));
 
     if (mayDates.length > 0) {
       console.log('✅ Found May Dates:', mayDates);
